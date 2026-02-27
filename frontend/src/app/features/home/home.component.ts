@@ -7,30 +7,39 @@ import { RouterLink } from '@angular/router';
   imports: [RouterLink],
   template: `
     <main role="main">
-      <!-- Hero Section -->
+      <!-- Hero Section - Split Layout -->
       <section class="hero-section">
-        <div class="container text-center">
-          <div class="hero-badge">
-            <i class="bi bi-leaf"></i> Sostenibilita nel Settore Primario <i class="bi bi-stars"></i>
-          </div>
-          <h1 class="hero-title">
-            Il Futuro dell'Agricoltura e
-            <span class="text-highlight">Sostenibile</span>
-          </h1>
-          <p class="hero-subtitle">
-            Esplora i report di sostenibilita delle principali aziende italiane del settore primario.
-            Confronta performance, monitora i progressi e scopri come il settore evolve verso pratiche
-            piu responsabili.
-          </p>
-          <div class="hero-cta">
-            <a routerLink="/companies" class="btn btn-primary btn-lg btn-cta">
-              <i class="bi bi-search me-2"></i>Esplora Report
-            </a>
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6 hero-text">
+              <h1 class="hero-title">
+                Trasparenza e responsabilita nel
+                <span class="text-highlight">settore primario</span>
+              </h1>
+              <p class="hero-subtitle">
+                Esplora i report di sostenibilita delle principali aziende italiane del settore primario.
+                Confronta performance, monitora i progressi e scopri come il settore evolve verso pratiche
+                piu responsabili.
+              </p>
+              <div class="hero-cta">
+                <a routerLink="/companies" class="btn btn-primary btn-lg btn-cta">
+                  <i class="bi bi-search me-2"></i>Esplora Report
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block hero-visual">
+              <div class="blob-composition">
+                <div class="blob blob-1"></div>
+                <div class="blob blob-2"></div>
+                <div class="blob blob-3"></div>
+                <i class="bi bi-flower1 blob-icon"></i>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Feature Cards -->
+      <!-- Feature Cards - Horizontal -->
       <section class="features-section">
         <div class="container">
           <div class="row g-4">
@@ -39,9 +48,11 @@ import { RouterLink } from '@angular/router';
                 <div class="feature-icon">
                   <i class="bi bi-bar-chart-line"></i>
                 </div>
-                <h3>Analisi Comparative</h3>
-                <p>Confronta le performance di sostenibilita tra diversi segmenti: agricoltura,
-                   allevamento, pesca e silvicoltura.</p>
+                <div class="feature-text">
+                  <h3>Analisi Comparative</h3>
+                  <p>Confronta le performance di sostenibilita tra diversi segmenti: agricoltura,
+                     allevamento, pesca e silvicoltura.</p>
+                </div>
               </div>
             </div>
             <div class="col-md-4">
@@ -49,9 +60,11 @@ import { RouterLink } from '@angular/router';
                 <div class="feature-icon">
                   <i class="bi bi-bullseye"></i>
                 </div>
-                <h3>Obiettivi Tracciati</h3>
-                <p>Monitora il progresso verso gli obiettivi ESG e gli standard internazionali
-                   come GRI, ESRS e SDGs.</p>
+                <div class="feature-text">
+                  <h3>Obiettivi Tracciati</h3>
+                  <p>Monitora il progresso verso gli obiettivi ESG e gli standard internazionali
+                     come GRI, ESRS e SDGs.</p>
+                </div>
               </div>
             </div>
             <div class="col-md-4">
@@ -59,9 +72,11 @@ import { RouterLink } from '@angular/router';
                 <div class="feature-icon">
                   <i class="bi bi-globe-americas"></i>
                 </div>
-                <h3>Impatto Globale</h3>
-                <p>Visualizza l'impatto ambientale e sociale delle aziende su scala locale
-                   e globale.</p>
+                <div class="feature-text">
+                  <h3>Impatto Globale</h3>
+                  <p>Visualizza l'impatto ambientale e sociale delle aziende su scala locale
+                     e globale.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -99,47 +114,39 @@ import { RouterLink } from '@angular/router';
     </main>
   `,
   styles: [`
+    /* === Hero Split === */
     .hero-section {
       padding: 5rem 0 4rem;
-      background: linear-gradient(180deg, rgba(46, 125, 50, 0.04) 0%, transparent 100%);
+      background-color: var(--color-bg);
     }
 
-    .hero-badge {
-      display: inline-block;
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      color: var(--color-primary);
-      background: rgba(46, 125, 50, 0.08);
-      margin-bottom: 1.5rem;
+    .hero-text {
+      padding-right: 3rem;
     }
 
     .hero-title {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 800;
       color: var(--color-secondary);
       margin-bottom: 1.25rem;
-      line-height: 1.15;
     }
 
     .text-highlight {
       color: var(--color-primary);
-      background: linear-gradient(180deg, transparent 60%, rgba(102, 187, 106, 0.25) 60%);
+      border-bottom: 3px solid var(--color-primary-light);
     }
 
     .hero-subtitle {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       color: var(--color-text-secondary);
-      max-width: 650px;
-      margin: 0 auto 2rem;
-      line-height: 1.7;
+      margin-bottom: 2rem;
+      line-height: 1.8;
     }
 
     .btn-cta {
       background-color: var(--color-primary) !important;
       border-color: var(--color-primary) !important;
-      border-radius: 12px;
+      border-radius: 8px;
       padding: 0.75rem 2rem;
       font-weight: 600;
 
@@ -149,49 +156,117 @@ import { RouterLink } from '@angular/router';
       }
     }
 
+    /* === Blob Composition === */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .blob-composition {
+      position: relative;
+      width: 380px;
+      height: 380px;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50% 40% 60% 45%;
+    }
+
+    .blob-1 {
+      width: 260px;
+      height: 260px;
+      background: rgba(180, 83, 9, 0.15);
+      top: 20px;
+      left: 60px;
+      animation: morphBlob 8s ease-in-out infinite;
+    }
+
+    .blob-2 {
+      width: 200px;
+      height: 200px;
+      background: rgba(30, 58, 47, 0.12);
+      top: 100px;
+      left: 10px;
+      border-radius: 40% 55% 45% 60%;
+      animation: morphBlob 10s ease-in-out infinite reverse;
+    }
+
+    .blob-3 {
+      width: 160px;
+      height: 160px;
+      background: rgba(217, 119, 6, 0.1);
+      top: 40px;
+      right: 20px;
+      border-radius: 55% 45% 50% 40%;
+      animation: morphBlob 12s ease-in-out infinite;
+    }
+
+    .blob-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3.5rem;
+      color: var(--color-primary);
+      opacity: 0.6;
+    }
+
+    @keyframes morphBlob {
+      0%, 100% { border-radius: 50% 40% 60% 45%; }
+      25% { border-radius: 40% 60% 45% 55%; }
+      50% { border-radius: 60% 45% 50% 40%; }
+      75% { border-radius: 45% 50% 40% 60%; }
+    }
+
+    /* === Feature Cards Horizontal === */
     .features-section {
       padding: 3rem 0;
     }
 
     .feature-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
       background: var(--color-card);
-      border-radius: 16px;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border: 1px solid var(--color-card-border);
       height: 100%;
-      transition: transform 0.2s;
+      transition: border-color 0.2s;
 
       &:hover {
-        transform: translateY(-3px);
+        border-color: var(--color-primary-light);
       }
 
       h3 {
-        font-size: 1.15rem;
-        margin-bottom: 0.5rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.4rem;
       }
 
       p {
         color: var(--color-text-secondary);
         font-size: 0.9rem;
         margin: 0;
+        line-height: 1.6;
       }
     }
 
     .feature-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      background: rgba(46, 125, 50, 0.1);
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      border-radius: 50%;
+      background: var(--color-primary);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1rem;
-      font-size: 1.5rem;
-      color: var(--color-primary);
+      font-size: 1.25rem;
+      color: #fff;
     }
 
+    /* === Context Section === */
     .context-section {
       padding: 4rem 0 5rem;
 
@@ -209,7 +284,7 @@ import { RouterLink } from '@angular/router';
     .btn-outline-primary {
       color: var(--color-primary) !important;
       border-color: var(--color-primary) !important;
-      border-radius: 12px;
+      border-radius: 8px;
       font-weight: 600;
 
       &:hover {
@@ -222,11 +297,23 @@ import { RouterLink } from '@angular/router';
       .hero-section {
         padding: 3rem 0 2.5rem;
       }
+      .hero-text {
+        padding-right: 0;
+        text-align: center;
+      }
       .hero-title {
         font-size: 2rem;
       }
       .hero-subtitle {
         font-size: 1rem;
+      }
+      .hero-cta {
+        text-align: center;
+      }
+      .feature-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
     }
   `]

@@ -27,8 +27,8 @@ import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterVie
         <div class="modal-body">
           @if (loading) {
             <div class="text-center py-4">
-              <div class="spinner-border text-success spinner-border-sm"></div>
-              <p class="text-muted mt-2">Caricamento resoconto...</p>
+              <div class="spinner-border spinner-border-sm" style="color: var(--color-primary)"></div>
+              <p class="mt-2" style="color: var(--color-text-secondary)">Caricamento resoconto...</p>
             </div>
           } @else if (summary) {
             <div class="summary-content">
@@ -37,11 +37,11 @@ import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterVie
               }
             </div>
           } @else {
-            <p class="text-muted text-center py-3">Resoconto non disponibile per questo report.</p>
+            <p class="text-center py-3" style="color: var(--color-text-secondary)">Resoconto non disponibile per questo report.</p>
           }
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-secondary" (click)="close.emit()">
+          <button type="button" class="btn btn-primary" (click)="close.emit()">
             Chiudi
           </button>
         </div>
@@ -52,7 +52,7 @@ import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterVie
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
+      background-color: rgba(30, 58, 47, 0.7);
       z-index: 1050;
       display: flex;
       align-items: center;
@@ -62,15 +62,15 @@ import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterVie
     }
 
     .modal-dialog {
-      background: #fff;
-      border-radius: 16px;
+      background: var(--color-bg);
+      border-radius: 8px;
       width: 100%;
       max-width: 700px;
       max-height: 85vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-      animation: scaleIn 0.2s ease-out;
+      box-shadow: 0 20px 60px rgba(30, 58, 47, 0.25);
+      animation: slideUp 0.25s ease-out;
       pointer-events: auto;
     }
 
@@ -79,10 +79,11 @@ import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterVie
       align-items: center;
       justify-content: space-between;
       padding: 1.25rem 1.5rem;
-      border-bottom: 1px solid #eee;
+      border-bottom: 2px solid var(--color-primary-light);
     }
 
     .modal-title {
+      font-family: var(--font-heading);
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--color-secondary);
@@ -102,8 +103,8 @@ import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterVie
       flex-shrink: 0;
 
       &:hover {
-        background-color: #f0f0f0;
-        color: var(--color-text);
+        background-color: rgba(180, 83, 9, 0.08);
+        color: var(--color-primary);
       }
     }
 
@@ -123,9 +124,21 @@ import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterVie
 
     .modal-footer {
       padding: 1rem 1.5rem;
-      border-top: 1px solid #eee;
+      border-top: 1px solid var(--color-card-border);
       display: flex;
       justify-content: flex-end;
+
+      .btn-primary {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+        border-radius: 6px;
+        font-weight: 600;
+
+        &:hover {
+          background-color: var(--color-primary-dark);
+          border-color: var(--color-primary-dark);
+        }
+      }
     }
 
     @keyframes fadeIn {
@@ -133,15 +146,14 @@ import { Component, Input, Output, EventEmitter, ElementRef, ViewChild, AfterVie
       to { opacity: 1; }
     }
 
-    @keyframes scaleIn {
-      from { transform: scale(0.95); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     @media (max-width: 576px) {
       .modal-dialog {
         max-height: 90vh;
-        border-radius: 12px;
       }
       .modal-header, .modal-body, .modal-footer {
         padding: 1rem;

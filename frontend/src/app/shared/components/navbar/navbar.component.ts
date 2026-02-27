@@ -6,10 +6,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   template: `
-    <nav class="navbar navbar-expand-lg sticky-top" role="navigation" aria-label="Navigazione principale">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" role="navigation" aria-label="Navigazione principale">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center" routerLink="/">
-          <i class="bi bi-leaf me-2"></i>
+          <i class="bi bi-compass me-2"></i>
           <span>Agro Sostenibile</span>
         </a>
         <button
@@ -41,42 +41,47 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   `,
   styles: [`
     .navbar {
-      background-color: #fff;
-      border-bottom: 2px solid rgba(46, 125, 50, 0.15);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      background-color: var(--color-secondary);
       padding: 0.75rem 0;
     }
 
     .navbar-brand {
+      font-family: var(--font-heading);
       font-weight: 700;
       font-size: 1.3rem;
-      color: var(--color-primary) !important;
+      color: #F5EDE0 !important;
 
       i {
         font-size: 1.5rem;
+        color: var(--color-primary-light);
       }
     }
 
     .nav-link {
       font-weight: 500;
-      color: var(--color-secondary) !important;
+      color: rgba(245, 237, 224, 0.8) !important;
       padding: 0.5rem 1rem !important;
       border-radius: 8px;
       transition: all 0.2s;
+      border-bottom: 2px solid transparent;
 
-      &:hover,
+      &:hover {
+        color: #F5EDE0 !important;
+        border-bottom-color: var(--color-primary-light);
+      }
+
       &.active {
-        color: var(--color-primary) !important;
-        background-color: rgba(46, 125, 50, 0.08);
+        color: #F5EDE0 !important;
+        border-bottom-color: var(--color-primary);
       }
     }
 
     .navbar-toggler {
-      border: none;
+      border: 1px solid rgba(245, 237, 224, 0.3);
       padding: 0.5rem;
 
       &:focus {
-        box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.25);
+        box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.35);
       }
     }
   `]

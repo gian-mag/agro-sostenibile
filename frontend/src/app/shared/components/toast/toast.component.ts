@@ -39,25 +39,39 @@ import { ToastService } from '../../../core/services';
       align-items: center;
       gap: 0.75rem;
       padding: 0.85rem 1rem;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-      color: #fff;
+      border-radius: 8px;
+      background-color: var(--color-bg);
+      color: var(--color-text);
       font-size: 0.9rem;
+      border-left: 4px solid transparent;
+      box-shadow: 0 4px 16px rgba(61, 50, 40, 0.12);
       animation: slideIn 0.3s ease-out;
     }
 
-    .toast-success { background-color: var(--color-success); }
-    .toast-error { background-color: var(--color-error); }
-    .toast-info { background-color: var(--color-accent); }
-    .toast-warning { background-color: var(--color-warning); }
+    .toast-success {
+      border-left-color: var(--color-success);
+      i:first-child { color: var(--color-success); }
+    }
+    .toast-error {
+      border-left-color: var(--color-error);
+      i:first-child { color: var(--color-error); }
+    }
+    .toast-info {
+      border-left-color: var(--color-accent);
+      i:first-child { color: var(--color-accent); }
+    }
+    .toast-warning {
+      border-left-color: var(--color-warning);
+      i:first-child { color: var(--color-warning); }
+    }
 
     .toast-close {
       background: none;
       border: none;
-      color: inherit;
+      color: var(--color-text-secondary);
       cursor: pointer;
       margin-left: auto;
-      opacity: 0.8;
+      opacity: 0.7;
       padding: 0;
 
       &:hover { opacity: 1; }

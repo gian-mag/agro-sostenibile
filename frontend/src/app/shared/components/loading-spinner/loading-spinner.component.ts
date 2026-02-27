@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   standalone: true,
   template: `
     <div class="spinner-wrapper" [attr.aria-label]="message" role="status">
-      <div class="spinner-border text-success" role="status">
+      <div class="spinner-border" role="status">
         <span class="visually-hidden">{{ message }}</span>
       </div>
       @if (showMessage) {
@@ -21,6 +21,10 @@ import { Component, Input } from '@angular/core';
       justify-content: center;
       padding: 3rem;
       gap: 1rem;
+    }
+
+    .spinner-border {
+      color: var(--color-primary);
     }
 
     .spinner-text {

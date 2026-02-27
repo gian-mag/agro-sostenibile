@@ -1,20 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap');
 
-// === Variabili tema Natura/Sostenibilita ===
+// === Variabili tema Terra Viva ===
 :root {
-  --color-primary: #2E7D32;
-  --color-primary-light: #66BB6A;
-  --color-primary-dark: #1B5E20;
-  --color-secondary: #5D4037;
-  --color-accent: #0288D1;
-  --color-bg: #FAFAF5;
-  --color-card: #FFFFFF;
-  --color-text: #212121;
-  --color-text-secondary: #757575;
-  --color-error: #D32F2F;
-  --color-success: #388E3C;
-  --color-warning: #F57F17;
-  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --color-primary: #B45309;
+  --color-primary-light: #D97706;
+  --color-primary-dark: #92400E;
+  --color-secondary: #1E3A2F;
+  --color-accent: #059669;
+  --color-bg: #FBF7F0;
+  --color-card: #F5EDE0;
+  --color-card-border: #E8DFD0;
+  --color-text: #3D3228;
+  --color-text-secondary: #8B7D6B;
+  --color-error: #DC2626;
+  --color-success: #059669;
+  --color-warning: #D97706;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', system-ui, -apple-system, sans-serif;
 }
 
 // === Reset e base ===
@@ -30,9 +32,9 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--color-text);
   background-color: var(--color-bg);
   -webkit-font-smoothing: antialiased;
@@ -40,9 +42,10 @@ body {
 
 // === Tipografia ===
 h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
   font-weight: 700;
   color: var(--color-secondary);
-  line-height: 1.3;
+  line-height: 1.2;
 }
 
 h1 { font-size: 2.5rem; }
@@ -61,14 +64,14 @@ a {
 
 // === Focus visibile per accessibilita ===
 :focus-visible {
-  outline: 3px solid var(--color-accent);
+  outline: 3px solid var(--color-primary-light);
   outline-offset: 2px;
 }
 
 // === Utility ===
-.text-primary-green { color: var(--color-primary); }
-.bg-primary-green { background-color: var(--color-primary); }
-.text-secondary-brown { color: var(--color-secondary); }
+.text-primary-amber { color: var(--color-primary); }
+.bg-primary-amber { background-color: var(--color-primary); }
+.text-secondary-forest { color: var(--color-secondary); }
 
 .badge-segment {
   display: inline-block;
@@ -77,9 +80,9 @@ a {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-radius: 50px;
-  background-color: rgba(46, 125, 50, 0.1);
-  color: var(--color-primary);
+  border-radius: 6px;
+  background-color: rgba(180, 83, 9, 0.12);
+  color: #92400E;
 }
 
 // === Scrollbar personalizzata ===
@@ -88,16 +91,16 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #F5EDE0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: #C4A882;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: #A68B64;
 }
 
 // === Responsive text ===

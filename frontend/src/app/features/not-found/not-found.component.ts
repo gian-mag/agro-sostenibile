@@ -29,7 +29,7 @@ import { RouterLink } from '@angular/router';
       .btn-primary {
         background-color: var(--color-primary);
         border-color: var(--color-primary);
-        border-radius: 12px;
+        border-radius: 8px;
         margin-top: 1rem;
       }
     }

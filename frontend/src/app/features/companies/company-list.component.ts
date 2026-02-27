@@ -12,7 +12,7 @@ import { forkJoin } from 'rxjs';
   template: `
     <section class="company-list-section" role="main">
       <div class="container">
-        <div class="section-header text-center mb-4">
+        <div class="section-header mb-4">
           <h1>Aziende del Settore Primario</h1>
           <p class="section-subtitle">
             Accedi ai report di sostenibilita dei principali operatori italiani e scopri
@@ -55,7 +55,7 @@ import { forkJoin } from 'rxjs';
               @if (selectedSegment() || selectedYear()) {
                 <button
                   type="button"
-                  class="btn btn-outline-secondary w-100"
+                  class="btn btn-outline-light w-100"
                   (click)="resetFilters()"
                 >
                   <i class="bi bi-x-circle me-1"></i> Mostra tutti
@@ -73,8 +73,8 @@ import { forkJoin } from 'rxjs';
         <!-- Error -->
         @else if (error()) {
           <div class="text-center py-5">
-            <i class="bi bi-exclamation-triangle text-danger" style="font-size: 2.5rem;"></i>
-            <p class="mt-3 text-muted">{{ error() }}</p>
+            <i class="bi bi-exclamation-triangle" style="font-size: 2.5rem; color: var(--color-error);"></i>
+            <p class="mt-3" style="color: var(--color-text-secondary)">{{ error() }}</p>
             <button class="btn btn-primary mt-2" (click)="loadData()">
               <i class="bi bi-arrow-clockwise me-1"></i> Riprova
             </button>
@@ -84,8 +84,8 @@ import { forkJoin } from 'rxjs';
         <!-- Empty -->
         @else if (filteredCompanies().length === 0) {
           <div class="text-center py-5">
-            <i class="bi bi-search text-muted" style="font-size: 2.5rem;"></i>
-            <p class="mt-3 text-muted">Nessuna azienda trovata per i filtri selezionati.</p>
+            <i class="bi bi-search" style="font-size: 2.5rem; color: var(--color-text-secondary);"></i>
+            <p class="mt-3" style="color: var(--color-text-secondary)">Nessuna azienda trovata per i filtri selezionati.</p>
             <button class="btn btn-outline-primary mt-2" (click)="resetFilters()">
               Mostra tutti
             </button>
@@ -96,7 +96,7 @@ import { forkJoin } from 'rxjs';
         @else {
           <div class="row g-4">
             @for (company of filteredCompanies(); track company.id) {
-              <div class="col-lg-4 col-md-6">
+              <div class="col-lg-6">
                 <app-company-card
                   [company]="company"
                   [reports]="getReportsForCompany(company.id)"
@@ -122,29 +122,36 @@ import { forkJoin } from 'rxjs';
     .section-subtitle {
       color: var(--color-text-secondary);
       max-width: 600px;
-      margin: 0.5rem auto 0;
       font-size: 1rem;
+      margin-top: 0.5rem;
     }
 
     .filters-bar {
-      background: var(--color-card);
+      background: var(--color-secondary);
       padding: 1.25rem;
-      border-radius: 14px;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      border-radius: 8px;
 
       .form-label {
         font-size: 0.85rem;
         font-weight: 500;
-        color: var(--color-text-secondary);
+        color: rgba(245, 237, 224, 0.7);
       }
 
       .form-select {
-        border-radius: 10px;
+        border-radius: 6px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: #F5EDE0;
 
         &:focus {
-          border-color: var(--color-primary);
-          box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+          border-color: var(--color-primary-light);
+          box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.25);
+          background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        option {
+          background: var(--color-secondary);
+          color: #F5EDE0;
         }
       }
     }
@@ -152,6 +159,11 @@ import { forkJoin } from 'rxjs';
     .btn-primary {
       background-color: var(--color-primary) !important;
       border-color: var(--color-primary) !important;
+
+      &:hover {
+        background-color: var(--color-primary-dark) !important;
+        border-color: var(--color-primary-dark) !important;
+      }
     }
 
     .btn-outline-primary {

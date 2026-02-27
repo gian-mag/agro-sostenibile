@@ -15,7 +15,9 @@ import { ReportSummaryModalComponent } from '../../shared/components/report-summ
         <nav aria-label="Breadcrumb" class="mb-4">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+            <li class="breadcrumb-sep">/</li>
             <li class="breadcrumb-item"><a routerLink="/companies">Aziende</a></li>
+            <li class="breadcrumb-sep">/</li>
             <li class="breadcrumb-item active" aria-current="page">{{ company()?.companyName }}</li>
           </ol>
         </nav>
@@ -24,7 +26,7 @@ import { ReportSummaryModalComponent } from '../../shared/components/report-summ
           <app-loading-spinner message="Caricamento azienda..." />
         } @else if (error()) {
           <div class="text-center py-5">
-            <i class="bi bi-exclamation-triangle text-danger" style="font-size: 2.5rem;"></i>
+            <i class="bi bi-exclamation-triangle" style="font-size: 2.5rem; color: var(--color-error);"></i>
             <p class="mt-3">{{ error() }}</p>
             <a routerLink="/companies" class="btn btn-primary mt-2">Torna alle aziende</a>
           </div>
@@ -58,7 +60,7 @@ import { ReportSummaryModalComponent } from '../../shared/components/report-summ
           <!-- Reports -->
           <h2 class="mb-3">Report di Sostenibilita</h2>
           @if (reports().length === 0) {
-            <p class="text-muted">Nessun report disponibile per questa azienda.</p>
+            <p style="color: var(--color-text-secondary)">Nessun report disponibile per questa azienda.</p>
           } @else {
             <div class="table-responsive">
               <table class="table table-reports" aria-label="Lista report di sostenibilita">
@@ -78,9 +80,9 @@ import { ReportSummaryModalComponent } from '../../shared/components/report-summ
                       <td>{{ report.title }}</td>
                       <td>
                         @if (report.standard) {
-                          <span class="badge bg-light text-dark">{{ report.standard }}</span>
+                          <span class="badge-standard">{{ report.standard }}</span>
                         } @else {
-                          <span class="text-muted">-</span>
+                          <span style="color: var(--color-text-secondary)">-</span>
                         }
                       </td>
                       <td>
@@ -89,7 +91,7 @@ import { ReportSummaryModalComponent } from '../../shared/components/report-summ
                             <span class="badge-tag">{{ tag.trim() }}</span>
                           }
                         } @else {
-                          <span class="text-muted">-</span>
+                          <span style="color: var(--color-text-secondary)">-</span>
                         }
                       </td>
                       <td>
@@ -149,17 +151,39 @@ import { ReportSummaryModalComponent } from '../../shared/components/report-summ
 
     .breadcrumb {
       font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
 
       a {
         color: var(--color-primary);
       }
     }
 
+    .breadcrumb-sep {
+      color: var(--color-primary-light);
+      font-weight: 600;
+    }
+
+    .breadcrumb-item.active {
+      color: var(--color-text-secondary);
+    }
+
+    .company-header {
+      background: var(--color-card);
+      border: 1px solid var(--color-card-border);
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
     .company-icon-lg {
       width: 56px;
       height: 56px;
-      border-radius: 14px;
-      background: rgba(46, 125, 50, 0.1);
+      border-radius: 50%;
+      background: rgba(180, 83, 9, 0.12);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -186,27 +210,59 @@ import { ReportSummaryModalComponent } from '../../shared/components/report-summ
     }
 
     .table-reports {
-      th {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: var(--color-text-secondary);
-        text-transform: uppercase;
-        letter-spacing: 0.3px;
-        border-bottom: 2px solid #eee;
+      thead {
+        background: var(--color-secondary);
+
+        th {
+          font-size: 0.85rem;
+          font-weight: 600;
+          color: #F5EDE0;
+          text-transform: uppercase;
+          letter-spacing: 0.3px;
+          border: none;
+          padding: 0.75rem 1rem;
+        }
+
+        th:first-child {
+          border-radius: 8px 0 0 0;
+        }
+
+        th:last-child {
+          border-radius: 0 8px 0 0;
+        }
       }
 
       td {
         vertical-align: middle;
         font-size: 0.9rem;
+        padding: 0.75rem 1rem;
       }
+
+      tbody tr:nth-child(even) {
+        background: var(--color-card);
+      }
+
+      tbody tr:nth-child(odd) {
+        background: var(--color-bg);
+      }
+    }
+
+    .badge-standard {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 6px;
+      background: rgba(180, 83, 9, 0.1);
+      color: var(--color-primary-dark);
     }
 
     .badge-tag {
       display: inline-block;
       padding: 0.15rem 0.5rem;
       font-size: 0.75rem;
-      border-radius: 50px;
-      background: rgba(2, 136, 209, 0.1);
+      border-radius: 6px;
+      background: rgba(5, 150, 105, 0.1);
       color: var(--color-accent);
       margin: 0.1rem;
     }
@@ -214,6 +270,11 @@ import { ReportSummaryModalComponent } from '../../shared/components/report-summ
     .btn-primary {
       background-color: var(--color-primary) !important;
       border-color: var(--color-primary) !important;
+
+      &:hover:not(:disabled) {
+        background-color: var(--color-primary-dark) !important;
+        border-color: var(--color-primary-dark) !important;
+      }
     }
 
     .btn-outline-primary {
@@ -224,6 +285,10 @@ import { ReportSummaryModalComponent } from '../../shared/components/report-summ
         background-color: var(--color-primary) !important;
         color: #fff !important;
       }
+    }
+
+    .btn-sm {
+      border-radius: 6px;
     }
   `]
 })

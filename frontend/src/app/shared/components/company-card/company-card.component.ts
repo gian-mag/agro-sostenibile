@@ -12,72 +12,77 @@ import { RouterLink } from '@angular/router';
   imports: [TruncatePipe, ReportSummaryModalComponent, RouterLink],
   template: `
     <div class="company-card">
-      <div class="card-header-section">
-        <div class="card-icon">
+      <div class="card-accent"></div>
+      <div class="card-icon-area">
+        <div class="card-icon-circle">
           <i [class]="getSegmentIcon(company.segment)"></i>
         </div>
-        <a [routerLink]="['/companies', company.id]" class="company-name">{{ company.companyName }}</a>
-        <span class="badge-segment">{{ company.segment }}</span>
       </div>
-
-      <p class="company-description">{{ company.description | truncate:150 }}</p>
-
-      @if (reports.length > 0) {
-        <div class="report-controls">
-          <label class="select-label" [for]="'year-select-' + company.id">Seleziona anno:</label>
-          <select
-            [id]="'year-select-' + company.id"
-            class="form-select form-select-sm"
-            [value]="selectedReport?.id"
-            (change)="onReportChange($event)"
-            [attr.aria-label]="'Seleziona anno report per ' + company.companyName"
-          >
-            @for (report of sortedReports; track report.id) {
-              <option [value]="report.id">Report {{ report.year }}</option>
-            }
-          </select>
+      <div class="card-content">
+        <div class="card-header-row">
+          <a [routerLink]="['/companies', company.id]" class="company-name">{{ company.companyName }}</a>
+          <span class="badge-segment">{{ company.segment }}</span>
         </div>
 
-        <div class="card-actions">
-          <button
-            type="button"
-            class="btn btn-outline-primary btn-sm btn-action"
-            (click)="onPreview()"
-            [disabled]="previewing()"
-            [attr.aria-label]="'Anteprima PDF ' + company.companyName + ' ' + selectedReport?.year"
-          >
-            @if (previewing()) {
-              <span class="spinner-border spinner-border-sm me-1"></span> Apertura...
-            } @else {
-              <i class="bi bi-eye"></i> Anteprima
-            }
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary btn-sm btn-action btn-download"
-            (click)="onDownload()"
-            [disabled]="downloading()"
-            [attr.aria-label]="'Scarica PDF ' + company.companyName + ' ' + selectedReport?.year"
-          >
-            @if (downloading()) {
-              <span class="spinner-border spinner-border-sm me-1"></span> Download...
-            } @else {
-              <i class="bi bi-download"></i> Scarica PDF
-            }
-          </button>
-        </div>
+        <p class="company-description">{{ company.description | truncate:150 }}</p>
 
-        <button
-          type="button"
-          class="btn btn-outline-secondary btn-sm btn-summary w-100"
-          (click)="onShowSummary()"
-          aria-label="Resoconto ultimo report"
-        >
-          <i class="bi bi-file-text"></i> Resoconto ultimo report
-        </button>
-      } @else {
-        <p class="no-reports text-muted">Nessun report disponibile.</p>
-      }
+        @if (reports.length > 0) {
+          <div class="card-bottom-row">
+            <div class="report-controls">
+              <select
+                [id]="'year-select-' + company.id"
+                class="form-select form-select-sm"
+                [value]="selectedReport?.id"
+                (change)="onReportChange($event)"
+                [attr.aria-label]="'Seleziona anno report per ' + company.companyName"
+              >
+                @for (report of sortedReports; track report.id) {
+                  <option [value]="report.id">{{ report.year }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="card-actions">
+              <button
+                type="button"
+                class="btn btn-outline-primary btn-sm btn-action"
+                (click)="onPreview()"
+                [disabled]="previewing()"
+                [attr.aria-label]="'Anteprima PDF ' + company.companyName + ' ' + selectedReport?.year"
+              >
+                @if (previewing()) {
+                  <span class="spinner-border spinner-border-sm"></span>
+                } @else {
+                  <i class="bi bi-eye"></i>
+                }
+              </button>
+              <button
+                type="button"
+                class="btn btn-primary btn-sm btn-action"
+                (click)="onDownload()"
+                [disabled]="downloading()"
+                [attr.aria-label]="'Scarica PDF ' + company.companyName + ' ' + selectedReport?.year"
+              >
+                @if (downloading()) {
+                  <span class="spinner-border spinner-border-sm"></span>
+                } @else {
+                  <i class="bi bi-download"></i>
+                }
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-sm btn-action"
+                (click)="onShowSummary()"
+                aria-label="Resoconto ultimo report"
+              >
+                <i class="bi bi-file-text"></i>
+              </button>
+            </div>
+          </div>
+        } @else {
+          <p class="no-reports">Nessun report disponibile.</p>
+        }
+      </div>
 
       <!-- Modale anteprima PDF -->
       @if (showPreviewModal()) {
@@ -94,8 +99,8 @@ import { RouterLink } from '@angular/router';
                 <iframe [src]="previewUrl()!" title="Anteprima PDF" class="pdf-iframe"></iframe>
               } @else {
                 <div class="text-center py-4">
-                  <div class="spinner-border text-success"></div>
-                  <p class="text-muted mt-2">Caricamento PDF...</p>
+                  <div class="spinner-border" style="color: var(--color-primary)"></div>
+                  <p class="mt-2" style="color: var(--color-text-secondary)">Caricamento PDF...</p>
                 </div>
               }
             </div>
@@ -118,81 +123,107 @@ import { RouterLink } from '@angular/router';
   styles: [`
     .company-card {
       background: var(--color-card);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      border: 1px solid var(--color-card-border);
       height: 100%;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      overflow: hidden;
     }
 
-    .card-header-section {
+    .card-accent {
+      width: 6px;
+      min-height: 100%;
+      background: var(--color-primary);
+      flex-shrink: 0;
+    }
+
+    .card-icon-area {
+      display: flex;
+      align-items: flex-start;
+      padding: 1.25rem 0 1.25rem 1rem;
+      flex-shrink: 0;
+    }
+
+    .card-icon-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(180, 83, 9, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--color-primary);
+    }
+
+    .card-content {
+      flex: 1;
+      padding: 1.25rem 1.25rem 1.25rem 1rem;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-      margin-bottom: 0.75rem;
+      min-width: 0;
     }
 
-    .card-icon {
-      font-size: 1.5rem;
-      color: var(--color-primary);
+    .card-header-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
     }
 
     .company-name {
-      font-size: 1.2rem;
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
       font-weight: 700;
-      color: var(--color-primary);
+      color: var(--color-secondary);
       text-decoration: none;
 
       &:hover {
-        color: var(--color-primary-dark);
+        color: var(--color-primary);
         text-decoration: underline;
       }
     }
 
     .company-description {
       color: var(--color-text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       line-height: 1.5;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
       flex-grow: 1;
     }
 
+    .card-bottom-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
     .report-controls {
-      margin-bottom: 0.75rem;
-
-      .select-label {
-        font-size: 0.8rem;
-        font-weight: 500;
-        color: var(--color-text-secondary);
-        margin-bottom: 0.25rem;
-        display: block;
-      }
-
       .form-select {
-        border-radius: 10px;
-        border-color: #ddd;
+        border-radius: 6px;
+        border-color: var(--color-card-border);
+        font-size: 0.8rem;
+        padding: 0.25rem 2rem 0.25rem 0.5rem;
 
         &:focus {
           border-color: var(--color-primary);
-          box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+          box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.15);
         }
       }
     }
 
     .card-actions {
       display: flex;
-      gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      gap: 0.35rem;
     }
 
     .btn-action {
-      flex: 1;
-      border-radius: 10px;
-      font-weight: 500;
-      font-size: 0.85rem;
-      padding: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      padding: 0.3rem 0.6rem;
     }
 
     .btn-primary {
@@ -215,40 +246,37 @@ import { RouterLink } from '@angular/router';
       }
     }
 
-    .btn-summary {
-      border-radius: 10px;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
     .no-reports {
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 1rem 0;
+      font-size: 0.85rem;
+      color: var(--color-text-secondary);
+      padding: 0.5rem 0;
+      margin: 0;
     }
 
     /* Modale anteprima PDF */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(30, 58, 47, 0.7);
       z-index: 1050;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 1rem;
+      animation: fadeIn 0.2s;
     }
 
     .modal-preview {
-      background: #fff;
-      border-radius: 12px;
+      background: var(--color-bg);
+      border-radius: 8px;
       width: 100%;
       max-width: 900px;
       height: 85vh;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 20px 60px rgba(30, 58, 47, 0.3);
       pointer-events: auto;
+      animation: slideUp 0.25s ease-out;
     }
 
     .modal-header {
@@ -256,10 +284,11 @@ import { RouterLink } from '@angular/router';
       align-items: center;
       justify-content: space-between;
       padding: 1rem 1.25rem;
-      border-bottom: 1px solid #eee;
+      border-bottom: 2px solid var(--color-primary-light);
     }
 
     .modal-title {
+      font-family: var(--font-heading);
       font-size: 1rem;
       font-weight: 700;
       color: var(--color-secondary);
@@ -276,8 +305,8 @@ import { RouterLink } from '@angular/router';
       border-radius: 6px;
 
       &:hover {
-        background-color: #f0f0f0;
-        color: var(--color-text);
+        background-color: rgba(180, 83, 9, 0.08);
+        color: var(--color-primary);
       }
     }
 
@@ -290,12 +319,41 @@ import { RouterLink } from '@angular/router';
       width: 100%;
       height: 100%;
       border: none;
-      border-radius: 0 0 12px 12px;
+      border-radius: 0 0 8px 8px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     @media (max-width: 576px) {
-      .card-actions {
+      .company-card {
         flex-direction: column;
+      }
+
+      .card-accent {
+        width: 100%;
+        min-height: 4px;
+        height: 4px;
+      }
+
+      .card-icon-area {
+        padding: 1rem 1rem 0;
+      }
+
+      .card-bottom-row {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .card-actions {
+        justify-content: flex-start;
       }
 
       .modal-preview {
