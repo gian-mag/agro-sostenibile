@@ -51,9 +51,9 @@ import { RouterLink } from '@angular/router';
                 [attr.aria-label]="'Anteprima PDF ' + company.companyName + ' ' + selectedReport?.year"
               >
                 @if (previewing()) {
-                  <span class="spinner-border spinner-border-sm"></span>
+                  <span class="spinner-border spinner-border-sm me-1"></span> Apertura...
                 } @else {
-                  <i class="bi bi-eye"></i>
+                  <i class="bi bi-eye me-1"></i> Anteprima
                 }
               </button>
               <button
@@ -64,9 +64,9 @@ import { RouterLink } from '@angular/router';
                 [attr.aria-label]="'Scarica PDF ' + company.companyName + ' ' + selectedReport?.year"
               >
                 @if (downloading()) {
-                  <span class="spinner-border spinner-border-sm"></span>
+                  <span class="spinner-border spinner-border-sm me-1"></span> Download...
                 } @else {
-                  <i class="bi bi-download"></i>
+                  <i class="bi bi-download me-1"></i> Scarica PDF
                 }
               </button>
               <button
@@ -75,7 +75,7 @@ import { RouterLink } from '@angular/router';
                 (click)="onShowSummary()"
                 aria-label="Resoconto ultimo report"
               >
-                <i class="bi bi-file-text"></i>
+                <i class="bi bi-file-text me-1"></i> Resoconto
               </button>
             </div>
           </div>
@@ -196,9 +196,8 @@ import { RouterLink } from '@angular/router';
 
     .card-bottom-row {
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
     .report-controls {
@@ -217,13 +216,16 @@ import { RouterLink } from '@angular/router';
 
     .card-actions {
       display: flex;
-      gap: 0.35rem;
+      gap: 0.4rem;
+      flex-wrap: wrap;
     }
 
     .btn-action {
       border-radius: 6px;
       font-size: 0.8rem;
-      padding: 0.3rem 0.6rem;
+      font-weight: 500;
+      padding: 0.35rem 0.65rem;
+      white-space: nowrap;
     }
 
     .btn-primary {
@@ -376,16 +378,19 @@ export class CompanyCardComponent implements OnInit, OnDestroy {
   downloading = signal(false);
   previewing = signal(false);
 
+  // Stato modale anteprima PDF
   showPreviewModal = signal(false);
   previewUrl = signal<SafeResourceUrl | null>(null);
   private rawPreviewUrl: string | null = null;
 
+  // Stato modale resoconto
   showSummaryModal = signal(false);
   summaryTitle = signal('');
   summaryText = signal('');
   summaryLoading = signal(false);
 
   ngOnInit(): void {
+    // Ordina per anno decrescente e seleziona il piu recente
     this.sortedReports = [...this.reports].sort((a, b) => b.year - a.year);
     this.selectedReport = this.sortedReports[0] || null;
   }
@@ -399,6 +404,7 @@ export class CompanyCardComponent implements OnInit, OnDestroy {
     this.selectedReport = this.sortedReports.find(r => r.id === reportId) || null;
   }
 
+  // Scarica il blob PDF e lo mostra in un iframe dentro la modale
   onPreview(): void {
     if (!this.selectedReport || this.previewing()) return;
     this.previewing.set(true);
@@ -444,6 +450,7 @@ export class CompanyCardComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Mostra il resoconto del report piu recente
   onShowSummary(): void {
     const latestReport = this.sortedReports[0];
     if (!latestReport) return;
@@ -466,6 +473,7 @@ export class CompanyCardComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Chiude la modale solo se il click e sull'overlay (non sul contenuto)
   onOverlayClick(event: MouseEvent, type: string): void {
     if ((event.target as HTMLElement).classList.contains('modal-overlay')) {
       if (type === 'preview') this.closePreview();
@@ -483,6 +491,7 @@ export class CompanyCardComponent implements OnInit, OnDestroy {
     return icons[segment] || 'bi bi-leaf';
   }
 
+  // Libera l'object URL per evitare memory leak
   private revokePreviewUrl(): void {
     if (this.rawPreviewUrl) {
       URL.revokeObjectURL(this.rawPreviewUrl);

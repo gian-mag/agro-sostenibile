@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+// Rotte principali dell'applicazione, tutte lazy-loaded
 export const routes: Routes = [
   {
     path: '',

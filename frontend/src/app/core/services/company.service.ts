@@ -4,6 +4,7 @@ import { Observable, map } from 'rxjs';
 import { Company, Report, ApiResponse } from '../models';
 import { environment } from '../../../environments/environment';
 
+// Servizio per le operazioni CRUD sulle aziende
 @Injectable({ providedIn: 'root' })
 export class CompanyService {
   private http = inject(HttpClient);
@@ -21,6 +22,7 @@ export class CompanyService {
     );
   }
 
+  // Recupera i report associati a una specifica azienda
   getReports(companyId: number): Observable<Report[]> {
     return this.http.get<ApiResponse<Report[]>>(`${this.baseUrl}/${companyId}/reports`).pipe(
       map(res => res.data)

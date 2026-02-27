@@ -4,6 +4,7 @@ import com.agrosost.backend.dto.ReportDto;
 import com.agrosost.backend.entity.Report;
 import org.springframework.stereotype.Component;
 
+// Converte l'entita Report nel DTO, includendo i dati dell'azienda associata
 @Component
 public class ReportMapper {
 

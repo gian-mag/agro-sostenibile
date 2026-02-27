@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+// Entita JPA che rappresenta un'azienda del settore primario
 @Entity
 @Table(name = "companies")
 @Getter
@@ -26,7 +27,7 @@ public class Company {
     private String companyName;
 
     @Column(nullable = false)
-    private String segment;
+    private String segment; // es. Agricoltura, Allevamento, Pesca, Silvicoltura, Agroalimentare
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
@@ -40,6 +41,7 @@ public class Company {
     @Column(name = "website_url")
     private String websiteUrl;
 
+    // Relazione uno-a-molti con i report di sostenibilita
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     @Builder.Default
     private List<Report> reports = new ArrayList<>();

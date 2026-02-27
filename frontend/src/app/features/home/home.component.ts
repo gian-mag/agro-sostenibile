@@ -13,13 +13,13 @@ import { RouterLink } from '@angular/router';
           <div class="row align-items-center">
             <div class="col-lg-6 hero-text">
               <h1 class="hero-title">
-                Trasparenza e responsabilita nel
-                <span class="text-highlight">settore primario</span>
+                Trasparenza e responsabilita nella
+                <span class="text-highlight">filiera agroalimentare</span>
               </h1>
               <p class="hero-subtitle">
-                Esplora i report di sostenibilita delle principali aziende italiane del settore primario.
-                Confronta performance, monitora i progressi e scopri come il settore evolve verso pratiche
-                piu responsabili.
+                Esplora i report di sostenibilita delle principali aziende italiane
+                del settore primario e della filiera agroalimentare. Consulta i documenti
+                pubblicati e scarica i PDF.
               </p>
               <div class="hero-cta">
                 <a routerLink="/companies" class="btn btn-primary btn-lg btn-cta">
@@ -28,56 +28,33 @@ import { RouterLink } from '@angular/router';
               </div>
             </div>
             <div class="col-lg-6 d-none d-lg-block hero-visual">
-              <div class="blob-composition">
-                <div class="blob blob-1"></div>
-                <div class="blob blob-2"></div>
-                <div class="blob blob-3"></div>
-                <i class="bi bi-flower1 blob-icon"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Feature Cards - Horizontal -->
-      <section class="features-section">
-        <div class="container">
-          <div class="row g-4">
-            <div class="col-md-4">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="bi bi-bar-chart-line"></i>
-                </div>
-                <div class="feature-text">
-                  <h3>Analisi Comparative</h3>
-                  <p>Confronta le performance di sostenibilita tra diversi segmenti: agricoltura,
-                     allevamento, pesca e silvicoltura.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="bi bi-bullseye"></i>
-                </div>
-                <div class="feature-text">
-                  <h3>Obiettivi Tracciati</h3>
-                  <p>Monitora il progresso verso gli obiettivi ESG e gli standard internazionali
-                     come GRI, ESRS e SDGs.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="feature-card">
-                <div class="feature-icon">
-                  <i class="bi bi-globe-americas"></i>
-                </div>
-                <div class="feature-text">
-                  <h3>Impatto Globale</h3>
-                  <p>Visualizza l'impatto ambientale e sociale delle aziende su scala locale
-                     e globale.</p>
-                </div>
-              </div>
+              <svg class="hero-svg" viewBox="0 0 400 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Colline -->
+                <ellipse cx="200" cy="320" rx="220" ry="60" fill="#E8DFD0"/>
+                <ellipse cx="130" cy="310" rx="160" ry="50" fill="#D4C8B0"/>
+                <ellipse cx="300" cy="315" rx="130" ry="45" fill="#DDD2C0"/>
+                <!-- Sole -->
+                <circle cx="320" cy="70" r="40" fill="#D97706" opacity="0.2"/>
+                <circle cx="320" cy="70" r="25" fill="#D97706" opacity="0.35"/>
+                <!-- Albero grande -->
+                <rect x="185" y="200" width="12" height="70" rx="4" fill="#92400E"/>
+                <circle cx="191" cy="175" r="45" fill="#1E3A2F" opacity="0.7"/>
+                <circle cx="170" cy="190" r="30" fill="#1E3A2F" opacity="0.5"/>
+                <circle cx="215" cy="185" r="32" fill="#1E3A2F" opacity="0.55"/>
+                <!-- Albero piccolo -->
+                <rect x="300" y="235" width="8" height="45" rx="3" fill="#92400E" opacity="0.8"/>
+                <circle cx="304" cy="218" r="25" fill="#1E3A2F" opacity="0.45"/>
+                <circle cx="290" cy="228" r="18" fill="#1E3A2F" opacity="0.35"/>
+                <!-- Spiga sinistra -->
+                <line x1="80" y1="280" x2="85" y2="220" stroke="#B45309" stroke-width="2.5" stroke-linecap="round"/>
+                <ellipse cx="78" cy="235" rx="6" ry="12" fill="#B45309" opacity="0.5" transform="rotate(-15 78 235)"/>
+                <ellipse cx="90" cy="245" rx="6" ry="12" fill="#B45309" opacity="0.5" transform="rotate(15 90 245)"/>
+                <ellipse cx="80" cy="255" rx="6" ry="12" fill="#B45309" opacity="0.4" transform="rotate(-10 80 255)"/>
+                <!-- Spiga destra -->
+                <line x1="360" y1="275" x2="355" y2="225" stroke="#B45309" stroke-width="2" stroke-linecap="round"/>
+                <ellipse cx="350" cy="240" rx="5" ry="10" fill="#B45309" opacity="0.45" transform="rotate(-12 350 240)"/>
+                <ellipse cx="362" cy="250" rx="5" ry="10" fill="#B45309" opacity="0.45" transform="rotate(12 362 250)"/>
+              </svg>
             </div>
           </div>
         </div>
@@ -88,13 +65,13 @@ import { RouterLink } from '@angular/router';
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-8">
-              <h2 class="text-center mb-4">Il Settore Primario e la Sostenibilita</h2>
+              <h2 class="text-center mb-4">Sostenibilita nella Filiera Agroalimentare</h2>
               <p>
-                Il settore primario - agricoltura, allevamento, pesca e silvicoltura - gioca un
-                ruolo cruciale nella gestione responsabile delle risorse naturali. La pubblicazione
-                dei report di sostenibilita consente alle aziende di mostrare i loro progressi in
-                termini di pratiche agricole sostenibili, conformita normativa e responsabilita
-                sociale lungo la filiera.
+                Il settore primario - agricoltura, allevamento, pesca e silvicoltura - e la
+                filiera agroalimentare che ne trasforma i prodotti, giocano un ruolo cruciale nella
+                gestione responsabile delle risorse naturali. La pubblicazione dei report di
+                sostenibilita consente alle aziende di rendicontare i propri impatti ambientali,
+                sociali e di governance lungo tutta la catena del valore.
               </p>
               <p>
                 Con l'entrata in vigore della <strong>Corporate Sustainability Reporting Directive (CSRD)</strong>
@@ -156,114 +133,17 @@ import { RouterLink } from '@angular/router';
       }
     }
 
-    /* === Blob Composition === */
+    /* === Hero Illustration === */
     .hero-visual {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .blob-composition {
-      position: relative;
-      width: 380px;
-      height: 380px;
-    }
-
-    .blob {
-      position: absolute;
-      border-radius: 50% 40% 60% 45%;
-    }
-
-    .blob-1 {
-      width: 260px;
-      height: 260px;
-      background: rgba(180, 83, 9, 0.15);
-      top: 20px;
-      left: 60px;
-      animation: morphBlob 8s ease-in-out infinite;
-    }
-
-    .blob-2 {
-      width: 200px;
-      height: 200px;
-      background: rgba(30, 58, 47, 0.12);
-      top: 100px;
-      left: 10px;
-      border-radius: 40% 55% 45% 60%;
-      animation: morphBlob 10s ease-in-out infinite reverse;
-    }
-
-    .blob-3 {
-      width: 160px;
-      height: 160px;
-      background: rgba(217, 119, 6, 0.1);
-      top: 40px;
-      right: 20px;
-      border-radius: 55% 45% 50% 40%;
-      animation: morphBlob 12s ease-in-out infinite;
-    }
-
-    .blob-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 3.5rem;
-      color: var(--color-primary);
-      opacity: 0.6;
-    }
-
-    @keyframes morphBlob {
-      0%, 100% { border-radius: 50% 40% 60% 45%; }
-      25% { border-radius: 40% 60% 45% 55%; }
-      50% { border-radius: 60% 45% 50% 40%; }
-      75% { border-radius: 45% 50% 40% 60%; }
-    }
-
-    /* === Feature Cards Horizontal === */
-    .features-section {
-      padding: 3rem 0;
-    }
-
-    .feature-card {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      background: var(--color-card);
-      border-radius: 8px;
-      padding: 1.5rem;
-      border: 1px solid var(--color-card-border);
-      height: 100%;
-      transition: border-color 0.2s;
-
-      &:hover {
-        border-color: var(--color-primary-light);
-      }
-
-      h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.4rem;
-      }
-
-      p {
-        color: var(--color-text-secondary);
-        font-size: 0.9rem;
-        margin: 0;
-        line-height: 1.6;
-      }
-    }
-
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      min-width: 48px;
-      border-radius: 50%;
-      background: var(--color-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      color: #fff;
+    .hero-svg {
+      width: 100%;
+      max-width: 420px;
+      height: auto;
     }
 
     /* === Context Section === */
@@ -308,11 +188,6 @@ import { RouterLink } from '@angular/router';
         font-size: 1rem;
       }
       .hero-cta {
-        text-align: center;
-      }
-      .feature-card {
-        flex-direction: column;
-        align-items: center;
         text-align: center;
       }
     }

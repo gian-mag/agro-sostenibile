@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+// Logica di business per le aziende e i relativi report
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -39,6 +40,7 @@ public class CompanyService {
                 .orElseThrow(() -> new ResourceNotFoundException("Company", id));
     }
 
+    // Verifica che l'azienda esista prima di cercare i suoi report
     public List<ReportDto> findReportsByCompanyId(Long companyId) {
         log.info("Recupero report per azienda id: {}", companyId);
         if (!companyRepository.existsById(companyId)) {

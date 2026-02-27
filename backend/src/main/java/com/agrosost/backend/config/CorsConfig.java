@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+// Configurazione CORS per permettere le chiamate dal frontend Angular
 @Configuration
 public class CorsConfig {
 
@@ -21,7 +22,7 @@ public class CorsConfig {
                         .allowedOrigins(allowedOrigins.split(","))
                         .allowedMethods("GET", "OPTIONS")
                         .allowedHeaders("Content-Type", "Accept")
-                        .exposedHeaders("Content-Disposition")
+                        .exposedHeaders("Content-Disposition") // necessario per il download PDF
                         .maxAge(3600);
             }
         };

@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+// DTO report esposto dalle API, include anche nome e id dell'azienda
 @Getter
 @Setter
 @NoArgsConstructor

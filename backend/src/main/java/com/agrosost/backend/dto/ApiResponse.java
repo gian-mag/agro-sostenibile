@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
+// Wrapper generico per le risposte API; include supporto opzionale alla paginazione
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,12 +18,13 @@ public class ApiResponse<T> {
     private int status;
     private LocalDateTime timestamp;
 
-    // Campi per paginazione (opzionali)
+    // Campi per paginazione (opzionali, inclusi solo se valorizzati)
     private Integer page;
     private Integer size;
     private Long totalElements;
     private Integer totalPages;
 
+    // Factory method per risposte senza paginazione
     public static <T> ApiResponse<T> ok(T data) {
         return ApiResponse.<T>builder()
                 .data(data)

@@ -4,6 +4,7 @@ import com.agrosost.backend.dto.CompanyDto;
 import com.agrosost.backend.entity.Company;
 import org.springframework.stereotype.Component;
 
+// Converte l'entita Company nel DTO esposto dalle API
 @Component
 public class CompanyMapper {
 

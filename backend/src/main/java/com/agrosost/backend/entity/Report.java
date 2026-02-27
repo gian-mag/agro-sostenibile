@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
+// Entita JPA che rappresenta un report di sostenibilita
 @Entity
 @Table(name = "reports")
 @Getter
@@ -30,6 +31,7 @@ public class Report {
     @Column(name = "report_year", nullable = false)
     private Integer year;
 
+    // Puo essere un path locale o un URL esterno
     @Column(name = "pdf_url", nullable = false)
     private String pdfUrl;
 
@@ -37,12 +39,13 @@ public class Report {
     private String pdfFileName;
 
     @Column(columnDefinition = "TEXT")
-    private String summary;
+    private String summary; // resoconto testuale del report
 
-    private String standard;
+    private String standard; // standard di rendicontazione (CSRD, ESRS, ecc.)
 
-    private String tags;
+    private String tags; // tag separati da virgola
 
+    // true se il PDF e salvato in locale, false se va scaricato da URL esterno
     @Column(name = "file_stored", nullable = false)
     @Builder.Default
     private Boolean fileStored = false;

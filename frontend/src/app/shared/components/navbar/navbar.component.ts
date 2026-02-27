@@ -23,7 +23,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" [class.show]="!isCollapsed" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
+          <ul class="navbar-nav ms-auto gap-2">
             <li class="nav-item">
               <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                 <i class="bi bi-house me-1"></i>Home
@@ -58,21 +58,21 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     }
 
     .nav-link {
-      font-weight: 500;
-      color: rgba(245, 237, 224, 0.8) !important;
-      padding: 0.5rem 1rem !important;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: rgba(245, 237, 224, 0.75) !important;
+      padding: 0.5rem 1.1rem !important;
       border-radius: 8px;
       transition: all 0.2s;
-      border-bottom: 2px solid transparent;
 
       &:hover {
-        color: #F5EDE0 !important;
-        border-bottom-color: var(--color-primary-light);
+        color: #FBF7F0 !important;
+        background-color: rgba(180, 83, 9, 0.25);
       }
 
       &.active {
-        color: #F5EDE0 !important;
-        border-bottom-color: var(--color-primary);
+        color: #FBF7F0 !important;
+        background-color: rgba(180, 83, 9, 0.35);
       }
     }
 
@@ -87,5 +87,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   `]
 })
 export class NavbarComponent {
-  isCollapsed = true;
+  isCollapsed = true; // stato hamburger menu su mobile
 }

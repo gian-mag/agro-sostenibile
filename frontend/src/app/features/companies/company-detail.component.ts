@@ -302,8 +302,9 @@ export class CompanyDetailComponent implements OnInit {
   reports = signal<Report[]>([]);
   loading = signal(true);
   error = signal('');
-  downloadingId = signal(0);
+  downloadingId = signal(0); // tiene traccia del report in download
 
+  // Stato della modale resoconto
   showModal = signal(false);
   modalTitle = signal('');
   modalSummary = signal('');
@@ -319,6 +320,7 @@ export class CompanyDetailComponent implements OnInit {
       return;
     }
 
+    // Prima carica l'azienda, poi i suoi report
     this.companyService.getById(id).subscribe({
       next: (company) => {
         this.company.set(company);
@@ -344,6 +346,7 @@ export class CompanyDetailComponent implements OnInit {
     });
   }
 
+  // Apre il PDF in una nuova tab del browser
   onPreview(report: Report): void {
     this.reportService.downloadPdf(report.id).subscribe({
       next: (blob) => {
@@ -358,6 +361,7 @@ export class CompanyDetailComponent implements OnInit {
     });
   }
 
+  // Scarica il PDF con nome file composto da azienda + anno
   onDownload(report: Report): void {
     if (this.downloadingId()) return;
     this.downloadingId.set(report.id);
@@ -376,6 +380,7 @@ export class CompanyDetailComponent implements OnInit {
     });
   }
 
+  // Apre la modale e carica il resoconto dal backend
   onShowSummary(report: Report): void {
     this.modalTitle.set(`${this.company()!.companyName} - ${report.title}`);
     this.modalSummary.set('');
@@ -394,6 +399,7 @@ export class CompanyDetailComponent implements OnInit {
     });
   }
 
+  // Mappa segmento -> icona Bootstrap
   getSegmentIcon(segment: string): string {
     const icons: Record<string, string> = {
       'Agricoltura': 'bi bi-flower1',

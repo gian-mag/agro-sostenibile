@@ -6,6 +6,7 @@ export interface Toast {
   type: 'success' | 'error' | 'info' | 'warning';
 }
 
+// Gestione notifiche temporanee (toast) tramite signal reattivo
 @Injectable({ providedIn: 'root' })
 export class ToastService {
   private nextId = 0;
@@ -14,6 +15,7 @@ export class ToastService {
   show(message: string, type: Toast['type'] = 'info', duration = 4000): void {
     const id = this.nextId++;
     this.toasts.update(t => [...t, { id, message, type }]);
+    // Gli errori restano visibili piu a lungo
     const autoDismiss = type === 'error' ? 6000 : duration;
     setTimeout(() => this.dismiss(id), autoDismiss);
   }

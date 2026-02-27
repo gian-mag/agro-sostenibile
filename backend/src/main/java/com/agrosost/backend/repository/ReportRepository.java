@@ -14,9 +14,11 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
 
     List<Report> findByYearOrderByCompanyCompanyNameAsc(Integer year);
 
+    // Anni distinti per popolare i filtri lato frontend
     @Query("SELECT DISTINCT r.year FROM Report r ORDER BY r.year DESC")
     List<Integer> findDistinctYears();
 
+    // Query dinamica: i parametri null vengono ignorati
     @Query("SELECT r FROM Report r JOIN r.company c WHERE " +
             "(:companyId IS NULL OR c.id = :companyId) AND " +
             "(:year IS NULL OR r.year = :year) AND " +

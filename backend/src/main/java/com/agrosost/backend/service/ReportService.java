@@ -27,6 +27,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.List;
 
+// Logica di business per i report: ricerca con filtri, download PDF e resoconto
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -67,6 +68,7 @@ public class ReportService {
         return reportRepository.findDistinctYears();
     }
 
+    // Decide se servire il PDF dallo storage locale o da un URL esterno
     public Resource downloadPdf(Long id) {
         Report report = reportRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Report", id));
@@ -80,6 +82,7 @@ public class ReportService {
         }
     }
 
+    // Genera il nome file per il download; usa quello salvato o ne costruisce uno
     public String getPdfFileName(Long id) {
         Report report = reportRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Report", id));
@@ -91,6 +94,7 @@ public class ReportService {
         return companyName + "_Report_" + report.getYear() + ".pdf";
     }
 
+    // Legge il PDF dal filesystem locale
     private Resource downloadFromLocalStorage(Report report) {
         try {
             Path filePath = Paths.get(pdfStoragePath).resolve(report.getPdfUrl()).normalize();
@@ -104,6 +108,7 @@ public class ReportService {
         }
     }
 
+    // Scarica il PDF da un URL esterno tramite HttpClient
     private Resource downloadFromExternalUrl(Report report) {
         try {
             HttpClient client = HttpClient.newBuilder()

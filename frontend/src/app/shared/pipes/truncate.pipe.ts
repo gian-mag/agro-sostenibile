@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+// Tronca il testo a una lunghezza massima aggiungendo "..."
 @Pipe({ name: 'truncate', standalone: true })
 export class TruncatePipe implements PipeTransform {
   transform(value: string, limit = 150, trail = '...'): string {

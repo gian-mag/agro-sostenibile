@@ -13,10 +13,10 @@ import { forkJoin } from 'rxjs';
     <section class="company-list-section" role="main">
       <div class="container">
         <div class="section-header mb-4">
-          <h1>Aziende del Settore Primario</h1>
+          <h1>Aziende della Filiera Agroalimentare</h1>
           <p class="section-subtitle">
-            Accedi ai report di sostenibilita dei principali operatori italiani e scopri
-            le loro iniziative per un futuro piu verde e responsabile.
+            Accedi ai report di sostenibilita dei principali operatori italiani
+            del settore primario e della filiera agroalimentare.
           </p>
         </div>
 
@@ -181,17 +181,20 @@ export class CompanyListComponent implements OnInit {
   private companyService = inject(CompanyService);
   private reportService = inject(ReportService);
 
+  // Stato reattivo della pagina
   companies = signal<Company[]>([]);
   allReports = signal<Report[]>([]);
   availableYears = signal<number[]>([]);
   loading = signal(true);
   error = signal('');
 
+  // Filtri selezionati dall'utente
   selectedSegment = signal('');
   selectedYear = signal(0);
 
   segments = ['Agricoltura', 'Allevamento', 'Pesca', 'Silvicoltura', 'Agroalimentare'];
 
+  // Ricalcola la lista filtrata ogni volta che cambia un filtro o i dati
   filteredCompanies = computed(() => {
     let result = this.companies();
     const segment = this.selectedSegment();
@@ -201,6 +204,7 @@ export class CompanyListComponent implements OnInit {
       result = result.filter(c => c.segment === segment);
     }
 
+    // Filtra per anno: mostra solo le aziende che hanno report per quell'anno
     if (year) {
       const companyIdsWithYear = new Set(
         this.allReports()
@@ -217,6 +221,7 @@ export class CompanyListComponent implements OnInit {
     this.loadData();
   }
 
+  // Carica aziende, report e anni disponibili in parallelo
   loadData(): void {
     this.loading.set(true);
     this.error.set('');

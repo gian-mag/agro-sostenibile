@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.LocalDateTime;
 
+// Gestione centralizzata delle eccezioni per tutte le API REST
 @RestControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
