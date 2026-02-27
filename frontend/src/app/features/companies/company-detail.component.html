@@ -1,0 +1,134 @@
+<section class="detail-section" role="main">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+        <li class="breadcrumb-sep">/</li>
+        <li class="breadcrumb-item"><a routerLink="/companies">Aziende</a></li>
+        <li class="breadcrumb-sep">/</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ company()?.companyName }}</li>
+      </ol>
+    </nav>
+
+    @if (loading()) {
+      <app-loading-spinner message="Caricamento azienda..." />
+    } @else if (error()) {
+      <div class="text-center py-5">
+        <i class="bi bi-exclamation-triangle" style="font-size: 2.5rem; color: var(--color-error);"></i>
+        <p class="mt-3">{{ error() }}</p>
+        <a routerLink="/companies" class="btn btn-primary mt-2">Torna alle aziende</a>
+      </div>
+    } @else if (company(); as c) {
+      <!-- Header -->
+      <div class="company-header mb-4">
+        <div class="d-flex align-items-start gap-3">
+          <div class="company-icon-lg">
+            <i [class]="getSegmentIcon(c.segment)"></i>
+          </div>
+          <div>
+            <h1 class="company-title">{{ c.companyName }}</h1>
+            <span class="badge-segment">{{ c.segment }}</span>
+            @if (c.websiteUrl) {
+              <a [href]="c.websiteUrl" target="_blank" rel="noopener" class="ms-2 website-link">
+                <i class="bi bi-box-arrow-up-right me-1"></i>Sito web
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="company-description-full mb-4">
+        <p>{{ c.description }}</p>
+        @if (c.history) {
+          <p class="text-muted">{{ c.history }}</p>
+        }
+      </div>
+
+      <!-- Reports -->
+      <h2 class="mb-3">Report di Sostenibilita</h2>
+      @if (reports().length === 0) {
+        <p style="color: var(--color-text-secondary)">Nessun report disponibile per questa azienda.</p>
+      } @else {
+        <div class="table-responsive">
+          <table class="table table-reports" aria-label="Lista report di sostenibilita">
+            <thead>
+              <tr>
+                <th scope="col">Anno</th>
+                <th scope="col">Titolo</th>
+                <th scope="col">Standard</th>
+                <th scope="col">Tag</th>
+                <th scope="col">Azioni</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (report of sortedReports(); track report.id) {
+                <tr>
+                  <td><strong>{{ report.year }}</strong></td>
+                  <td>{{ report.title }}</td>
+                  <td>
+                    @if (report.standard) {
+                      <span class="badge-standard">{{ report.standard }}</span>
+                    } @else {
+                      <span style="color: var(--color-text-secondary)">-</span>
+                    }
+                  </td>
+                  <td>
+                    @if (report.tags) {
+                      @for (tag of report.tags.split(','); track tag) {
+                        <span class="badge-tag">{{ tag.trim() }}</span>
+                      }
+                    } @else {
+                      <span style="color: var(--color-text-secondary)">-</span>
+                    }
+                  </td>
+                  <td>
+                    <div class="btn-group-sm d-flex gap-1 flex-wrap">
+                      <button
+                        class="btn btn-outline-primary btn-sm"
+                        (click)="onPreview(report)"
+                        [attr.aria-label]="'Anteprima report ' + report.year"
+                      >
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      <button
+                        class="btn btn-primary btn-sm"
+                        (click)="onDownload(report)"
+                        [disabled]="downloadingId() === report.id"
+                        [attr.aria-label]="'Scarica report ' + report.year"
+                      >
+                        @if (downloadingId() === report.id) {
+                          <span class="spinner-border spinner-border-sm"></span>
+                        } @else {
+                          <i class="bi bi-download"></i>
+                        }
+                      </button>
+                      <button
+                        class="btn btn-outline-secondary btn-sm"
+                        (click)="onShowSummary(report)"
+                        [attr.aria-label]="'Resoconto report ' + report.year"
+                      >
+                        <i class="bi bi-file-text"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
+    }
+
+    @if (showModal()) {
+      <app-report-summary-modal
+        [title]="modalTitle()"
+        [summary]="modalSummary()"
+        [loading]="modalLoading()"
+        [reportId]="0"
+        (close)="showModal.set(false)"
+      />
+    }
+  </div>
+</section>

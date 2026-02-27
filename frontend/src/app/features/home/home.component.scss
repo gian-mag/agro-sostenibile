@@ -1,0 +1,100 @@
+/* === Hero Split === */
+.hero-section {
+  padding: 5rem 0 4rem;
+  background-color: var(--color-bg);
+}
+
+.hero-text {
+  padding-right: 3rem;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--color-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.text-highlight {
+  color: var(--color-primary);
+  border-bottom: 3px solid var(--color-primary-light);
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.btn-cta {
+  background-color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  border-radius: 8px;
+  padding: 0.75rem 2rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: var(--color-primary-dark) !important;
+    border-color: var(--color-primary-dark) !important;
+  }
+}
+
+/* === Hero Illustration === */
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-svg {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+}
+
+/* === Context Section === */
+.context-section {
+  padding: 4rem 0 5rem;
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+}
+
+.btn-outline-primary {
+  color: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  border-radius: 8px;
+  font-weight: 600;
+
+  &:hover {
+    background-color: var(--color-primary) !important;
+    color: #fff !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 3rem 0 2.5rem;
+  }
+  .hero-text {
+    padding-right: 0;
+    text-align: center;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .hero-cta {
+    text-align: center;
+  }
+}

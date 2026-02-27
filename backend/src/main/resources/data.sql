@@ -35,13 +35,6 @@ VALUES ('Inalca', 'Allevamento',
         NULL, 'https://www.inalca.it',
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- 5. Barilla (Agroalimentare / Filiera cerealicola)
-INSERT INTO companies (company_name, segment, description, history, logo_url, website_url, created_at, updated_at)
-VALUES ('Barilla', 'Agroalimentare',
-        'Barilla e'' il primo gruppo alimentare italiano e leader mondiale nella pasta. Con il progetto "Buono per Te, Buono per il Pianeta" promuove un modello alimentare sostenibile lungo la filiera cerealicola, dal campo alla tavola.',
-        'Fondata nel 1877 a Parma da Pietro Barilla come bottega di pane e pasta, oggi Barilla e'' una multinazionale presente in oltre 100 paesi con marchi come Barilla, Mulino Bianco, Wasa e Harrys.',
-        NULL, 'https://www.barillagroup.com',
-        CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 -- =============================================
 -- REPORTS DI SOSTENIBILITA (link reali verificati)
@@ -115,11 +108,3 @@ VALUES (4, 'Bilancio di Sostenibilita Inalca 2022', 2022,
         'GRI', 'animal-welfare,energy,traceability,waste', false,
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- Barilla
-INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
-VALUES (5, 'Rapporto di Sostenibilita Barilla 2024', 2024,
-        'https://sustainabilityreport.barillagroup.com/pdf/2024_barilla_group_rapporto_sostenibilita_ita_interattivo.pdf',
-        'Barilla_Rapporto_Sostenibilita_2024.pdf',
-        'Il Rapporto di Sostenibilita 2024 di Barilla illustra i risultati del programma "Buono per Te, Buono per il Pianeta": riduzione delle emissioni di CO2, approvvigionamento responsabile del grano duro tramite il Disciplinare di Coltivazione Barilla, investimenti nella filiera corta con migliaia di aziende agricole italiane coinvolte e transizione verso packaging 100% riciclabile.',
-        'GRI', 'climate,supply-chain,responsible-sourcing,packaging', false,
-        CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

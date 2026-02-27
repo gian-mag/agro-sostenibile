@@ -1,0 +1,108 @@
+<div class="company-card">
+  <div class="card-accent"></div>
+  <div class="card-icon-area">
+    <div class="card-icon-circle">
+      <i [class]="getSegmentIcon(company.segment)"></i>
+    </div>
+  </div>
+  <div class="card-content">
+    <div class="card-header-row">
+      <a [routerLink]="['/companies', company.id]" class="company-name">{{ company.companyName }}</a>
+      <span class="badge-segment">{{ company.segment }}</span>
+    </div>
+
+    <p class="company-description">{{ company.description | truncate:150 }}</p>
+
+    @if (reports.length > 0) {
+      <div class="card-bottom-row">
+        <div class="report-controls">
+          <select
+            [id]="'year-select-' + company.id"
+            class="form-select form-select-sm"
+            [value]="selectedReport?.id"
+            (change)="onReportChange($event)"
+            [attr.aria-label]="'Seleziona anno report per ' + company.companyName"
+          >
+            @for (report of sortedReports; track report.id) {
+              <option [value]="report.id">{{ report.year }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="card-actions">
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm btn-action"
+            (click)="onPreview()"
+            [disabled]="previewing()"
+            [attr.aria-label]="'Anteprima PDF ' + company.companyName + ' ' + selectedReport?.year"
+          >
+            @if (previewing()) {
+              <span class="spinner-border spinner-border-sm me-1"></span> Apertura...
+            } @else {
+              <i class="bi bi-eye me-1"></i> Anteprima
+            }
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary btn-sm btn-action"
+            (click)="onDownload()"
+            [disabled]="downloading()"
+            [attr.aria-label]="'Scarica PDF ' + company.companyName + ' ' + selectedReport?.year"
+          >
+            @if (downloading()) {
+              <span class="spinner-border spinner-border-sm me-1"></span> Download...
+            } @else {
+              <i class="bi bi-download me-1"></i> Scarica PDF
+            }
+          </button>
+          <button
+            type="button"
+            class="btn btn-outline-secondary btn-sm btn-action"
+            (click)="onShowSummary()"
+            aria-label="Resoconto ultimo report"
+          >
+            <i class="bi bi-file-text me-1"></i> Resoconto
+          </button>
+        </div>
+      </div>
+    } @else {
+      <p class="no-reports">Nessun report disponibile.</p>
+    }
+  </div>
+
+  <!-- Modale anteprima PDF -->
+  @if (showPreviewModal()) {
+    <div class="modal-overlay" (click)="onOverlayClick($event, 'preview')" (keydown.escape)="closePreview()">
+      <div class="modal-dialog modal-preview">
+        <div class="modal-header">
+          <h3 class="modal-title">{{ company.companyName }} - Report {{ selectedReport?.year }}</h3>
+          <button type="button" class="btn-close-modal" (click)="closePreview()" aria-label="Chiudi">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        <div class="modal-body-preview">
+          @if (previewUrl()) {
+            <iframe [src]="previewUrl()!" title="Anteprima PDF" class="pdf-iframe"></iframe>
+          } @else {
+            <div class="text-center py-4">
+              <div class="spinner-border" style="color: var(--color-primary)"></div>
+              <p class="mt-2" style="color: var(--color-text-secondary)">Caricamento PDF...</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Modale resoconto -->
+  @if (showSummaryModal()) {
+    <app-report-summary-modal
+      [title]="summaryTitle()"
+      [summary]="summaryText()"
+      [loading]="summaryLoading()"
+      [reportId]="company.id"
+      (close)="showSummaryModal.set(false)"
+    />
+  }
+</div>

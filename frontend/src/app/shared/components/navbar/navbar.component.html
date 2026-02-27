@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" role="navigation" aria-label="Navigazione principale">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" routerLink="/">
+      <i class="bi bi-compass me-2"></i>
+      <span>Agro Sostenibile</span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="isCollapsed = !isCollapsed"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="navbarNav"
+      aria-label="Toggle navigazione"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [class.show]="!isCollapsed" id="navbarNav">
+      <ul class="navbar-nav ms-auto gap-2">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <i class="bi bi-house me-1"></i>Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/companies" routerLinkActive="active">
+            <i class="bi bi-buildings me-1"></i>Aziende
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

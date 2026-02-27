@@ -1,0 +1,43 @@
+<div
+  class="modal-overlay"
+  (click)="onOverlayClick($event)"
+  (keydown.escape)="close.emit()"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-labelledby]="'modal-title-' + reportId"
+>
+  <div class="modal-dialog" #modalDialog tabindex="-1">
+    <div class="modal-header">
+      <h3 [id]="'modal-title-' + reportId" class="modal-title">{{ title }}</h3>
+      <button
+        type="button"
+        class="btn-close-modal"
+        (click)="close.emit()"
+        aria-label="Chiudi"
+      >
+        <i class="bi bi-x-lg"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      @if (loading) {
+        <div class="text-center py-4">
+          <div class="spinner-border spinner-border-sm" style="color: var(--color-primary)"></div>
+          <p class="mt-2" style="color: var(--color-text-secondary)">Caricamento resoconto...</p>
+        </div>
+      } @else if (summary) {
+        <div class="summary-content">
+          @for (paragraph of summaryParagraphs; track $index) {
+            <p>{{ paragraph }}</p>
+          }
+        </div>
+      } @else {
+        <p class="text-center py-3" style="color: var(--color-text-secondary)">Resoconto non disponibile per questo report.</p>
+      }
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" (click)="close.emit()">
+        Chiudi
+      </button>
+    </div>
+  </div>
+</div>
