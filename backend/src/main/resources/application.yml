@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: agro-sostenibile-backend
+  profiles:
+    active: dev
+
+app:
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:4200}
+  storage:
+    pdf-path: ${PDF_STORAGE_PATH:./storage/pdf}
+  download:
+    timeout-seconds: 30
