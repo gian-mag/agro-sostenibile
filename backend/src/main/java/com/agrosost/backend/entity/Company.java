@@ -27,7 +27,7 @@ public class Company {
     private String companyName;
 
     @Column(nullable = false)
-    private String segment; // es. Agricoltura, Allevamento, Pesca, Silvicoltura, Agroalimentare
+    private String segment; // es. Agricoltura, Allevamento
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;

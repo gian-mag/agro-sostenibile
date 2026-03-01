@@ -27,7 +27,7 @@ export class CompanyListComponent implements OnInit {
   selectedSegment = signal('');
   selectedYear = signal(0);
 
-  segments = ['Agricoltura', 'Allevamento', 'Pesca', 'Silvicoltura'];
+  segments = ['Agricoltura', 'Allevamento'];
 
   // Ricalcola la lista filtrata ogni volta che cambia un filtro o i dati
   filteredCompanies = computed(() => {

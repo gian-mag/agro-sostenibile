@@ -64,16 +64,17 @@
 
 .table-reports {
   thead {
-    background: var(--color-secondary);
+    background: var(--color-secondary) !important;
 
     th {
       font-size: 0.85rem;
-      font-weight: 600;
-      color: #F5EDE0;
+      font-weight: 700;
+      color: #000000 !important;
+      background: #E8DFD0 !important;
       text-transform: uppercase;
-      letter-spacing: 0.3px;
-      border: none;
-      padding: 0.75rem 1rem;
+      letter-spacing: 0.5px;
+      border: none !important;
+      padding: 0.85rem 1rem;
     }
 
     th:first-child {

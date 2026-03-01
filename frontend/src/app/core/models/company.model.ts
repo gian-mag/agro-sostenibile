@@ -2,7 +2,7 @@
 export interface Company {
   id: number;
   companyName: string;
-  segment: string; // es. Agricoltura, Allevamento, Pesca, Silvicoltura, Agroalimentare
+  segment: string; // es. Agricoltura, Allevamento
   description: string;
   history?: string;
   logoUrl?: string;

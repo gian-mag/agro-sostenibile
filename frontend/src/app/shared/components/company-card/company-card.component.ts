@@ -132,9 +132,7 @@ export class CompanyCardComponent implements OnInit, OnDestroy {
   getSegmentIcon(segment: string): string {
     const icons: Record<string, string> = {
       'Agricoltura': 'bi bi-flower1',
-      'Allevamento': 'bi bi-heart-pulse',
-      'Pesca': 'bi bi-water',
-      'Silvicoltura': 'bi bi-tree-fill'
+      'Allevamento': 'bi bi-heart-pulse'
     };
     return icons[segment] || 'bi bi-leaf';
   }

@@ -1,110 +1,110 @@
 -- =============================================
 -- DATA SEEDING - Aziende del Settore Primario
--- Link PDF verificati il 27/02/2026
+-- 4 aziende reali (agricoltura e allevamento)
+-- Link PDF verificati il 01/03/2026
 -- =============================================
 
--- 1. Granarolo (Lattiero-caseario / Allevamento)
+-- 1. BF SpA (Bonifiche Ferraresi) - Agricoltura
 INSERT INTO companies (company_name, segment, description, history, logo_url, website_url, created_at, updated_at)
-VALUES ('Granarolo', 'Allevamento',
-        'Granarolo e'' la principale filiera italiana del latte, dalla stalla alla tavola. Cooperativa con oltre 600 allevatori soci, produce latte, yogurt, formaggi e derivati con forte attenzione alla sostenibilita della filiera zootecnica.',
-        'Fondata nel 1957 a Bologna come cooperativa di allevatori emiliani, Granarolo e'' cresciuta fino a diventare il primo gruppo lattiero-caseario italiano a capitale interamente italiano, con oltre 1 miliardo di euro di fatturato.',
-        NULL, 'https://www.gruppogranarolo.it',
+VALUES ('BF SpA', 'Agricoltura',
+        'BF SpA (Bonifiche Ferraresi) e'' la piu grande azienda agricola italiana per superficie coltivata, con oltre 6.500 ettari gestiti direttamente. Produce cereali, riso, colture industriali e ortofrutta, operando nel cuore del settore primario con un modello di agricoltura sostenibile e innovativa.',
+        'Fondata nel 1872 a Jolanda di Savoia (Ferrara), Bonifiche Ferraresi nasce dalla bonifica delle paludi del delta del Po. Quotata in Borsa Italiana, e'' oggi il principale operatore agricolo del Paese, con un fatturato di gruppo superiore al miliardo di euro e un impegno crescente nella transizione ecologica dell''agricoltura.',
+        NULL, 'https://www.bfspa.it',
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- 2. Mutti (Agricoltura / Trasformazione pomodoro)
+-- 2. Consorzio Casalasco del Pomodoro - Agricoltura
 INSERT INTO companies (company_name, segment, description, history, logo_url, website_url, created_at, updated_at)
-VALUES ('Mutti', 'Agricoltura',
-        'Mutti e'' leader europeo nel mercato dei derivati del pomodoro. Lavora esclusivamente pomodoro 100% italiano coltivato da una filiera agricola controllata, con un forte impegno per la sostenibilita ambientale e la riduzione dell''impronta idrica.',
-        'Fondata nel 1899 a Montechiarugolo (Parma) dalla famiglia Mutti, l''azienda ha trasformato il pomodoro in un''eccellenza italiana conosciuta nel mondo. Dal 2022 pubblica il Bilancio Ambientale in collaborazione con il WWF.',
-        NULL, 'https://mutti-parma.com',
+VALUES ('Casalasco', 'Agricoltura',
+        'Casalasco Societa Agricola e'' un consorzio che riunisce oltre 800 aziende agricole e coltiva 12.000 ettari di pomodoro nel nord Italia. E'' il primo produttore italiano di derivati del pomodoro con un modello di filiera corta che parte direttamente dal campo.',
+        'Fondato nel 1977 a Rivarolo del Re (Cremona), il Consorzio Casalasco del Pomodoro e'' cresciuto fino a raggiungere un fatturato consolidato di 630 milioni di euro nel 2023. Con i marchi Pomi e De Rica, esporta in oltre 60 paesi mantenendo il legame diretto con gli agricoltori del territorio.',
+        NULL, 'https://www.casalasco.com',
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- 3. Bolton Group (Pesca / Conserve ittiche)
+-- 3. Amadori - Allevamento (Avicolo Integrato)
 INSERT INTO companies (company_name, segment, description, history, logo_url, website_url, created_at, updated_at)
-VALUES ('Bolton Group', 'Pesca',
-        'Bolton Group e'' una multinazionale italiana leader nel mercato delle conserve ittiche con i marchi Rio Mare e Saupiquet. Si impegna per una pesca responsabile, la tutela degli ecosistemi marini e la riduzione dell''impatto ambientale del packaging.',
-        'Parte del gruppo familiare Nissim, Bolton ha le sue radici nella tradizione conserviera italiana. Rio Mare, il brand di punta, e'' nato nel 1966 e oggi e'' presente in oltre 40 paesi con un forte impegno per la pesca sostenibile.',
-        NULL, 'https://www.bolton.com',
+VALUES ('Amadori', 'Allevamento',
+        'Amadori e'' uno dei principali gruppi avicoli italiani con una filiera completamente integrata: dai mangimifici agli allevamenti propri, dalla trasformazione alla distribuzione. Controlla direttamente ogni fase della produzione garantendo tracciabilita e sicurezza alimentare.',
+        'Fondato nel 1969 a San Vittore di Cesena da Francesco Amadori, il gruppo ha raggiunto un fatturato di 1.780 milioni di euro nel 2023. Con oltre 9.000 dipendenti e una rete di allevamenti su tutto il territorio nazionale, Amadori rappresenta un pilastro della filiera avicola italiana.',
+        NULL, 'https://www.amadori.it',
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- 4. Inalca / Gruppo Cremonini (Allevamento / Carni bovine)
+-- 4. Eurovo - Allevamento (Uova)
 INSERT INTO companies (company_name, segment, description, history, logo_url, website_url, created_at, updated_at)
-VALUES ('Inalca', 'Allevamento',
-        'Inalca, parte del Gruppo Cremonini, e'' il primo produttore italiano di carni bovine e uno dei leader europei del settore. Opera lungo l''intera filiera dalla zootecnia alla distribuzione, con un forte impegno verso la sostenibilita della filiera bovina.',
-        'Fondata nel 1963 a Castelvetro di Modena, Inalca ha sviluppato un modello integrato di filiera che va dall''allevamento alla distribuzione. Con 11 edizioni del Bilancio di Sostenibilita, e'' tra le aziende piu trasparenti del settore zootecnico italiano.',
-        NULL, 'https://www.inalca.it',
+VALUES ('Eurovo', 'Allevamento',
+        'Eurovo e'' il leader europeo nella produzione e distribuzione di uova e ovoprodotti, con 15 milioni di uova prodotte al giorno. Gestisce direttamente i propri allevamenti e dal 2023 tutti gli stabilimenti italiani sono cage-free (biologico, all''aperto o a terra).',
+        'Fondato nel 1966 a Imola (Bologna), il Gruppo Eurovo si e'' affermato come riferimento continentale per qualita e innovazione nel settore delle uova. Con 16 impianti fotovoltaici e 2.000 alberi piantati nello stabilimento di Mordano, l''azienda integra sostenibilita ambientale e benessere animale nella propria strategia di crescita.',
+        NULL, 'https://www.eurovo.com',
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 
 -- =============================================
--- REPORTS DI SOSTENIBILITA (link reali verificati)
+-- REPORTS DI SOSTENIBILITA (link PDF verificati)
 -- =============================================
 
--- Granarolo
+-- BF SpA
 INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
-VALUES (1, 'Bilancio di Sostenibilita Granarolo 2023', 2023,
-        'https://www.improntaetica.org/wp-content/uploads/2024/09/Granarolo-BS2023-ITA.pdf',
-        'Granarolo_Bilancio_Sostenibilita_2023.pdf',
-        'Nel Bilancio di Sostenibilita 2023, il Gruppo Granarolo rendiconta il proprio impegno lungo la filiera lattiero-casearia: riduzione delle emissioni di CO2, benessere animale negli allevamenti dei soci, valorizzazione del latte 100% italiano e transizione energetica degli stabilimenti. Il report segue lo standard GRI e si allinea agli SDGs dell''Agenda 2030.',
-        'GRI', 'climate,animal-welfare,supply-chain,energy', false,
+VALUES (1, 'Dichiarazione Non Finanziaria BF 2023', 2023,
+        'https://www.bfspa.it/files/02286/gruppobfdnf2023.pdf',
+        'BF_SpA_DNF_2023.pdf',
+        'La Dichiarazione Non Finanziaria 2023 del Gruppo BF rendiconta l''impegno dell''azienda nella gestione sostenibile di oltre 6.500 ettari di terreni agricoli. Tra i temi principali: la riduzione dell''impatto ambientale delle coltivazioni, l''adozione di tecniche di agricoltura di precisione, la gestione responsabile delle risorse idriche e la tutela della biodiversita nei territori gestiti. Il documento e'' redatto ai sensi del D.Lgs. 254/2016.',
+        'GRI', 'clima,agricoltura,acqua,biodiversita', false,
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
-VALUES (1, 'Bilancio di Sostenibilita Granarolo 2022', 2022,
-        'https://www.improntaetica.org/wp-content/uploads/2023/07/IT-Granarolo_BS2022-affiancate-web-alta-compresso.pdf',
-        'Granarolo_Bilancio_Sostenibilita_2022.pdf',
-        'Il Bilancio 2022 di Granarolo si concentra sulla tracciabilita del latte dalla stalla alla tavola, sugli investimenti in energia rinnovabile e sul programma di benessere animale che coinvolge oltre 600 allevatori soci. Particolare attenzione alla riduzione degli sprechi alimentari e al packaging sostenibile.',
-        'GRI', 'climate,animal-welfare,packaging,traceability', false,
+VALUES (1, 'Dichiarazione Non Finanziaria BF 2022', 2022,
+        'https://www.bfspa.it/files/01086/bfdnf2022.pdf',
+        'BF_SpA_DNF_2022.pdf',
+        'La DNF 2022 del Gruppo BF documenta i progressi nella transizione verso un''agricoltura sempre piu sostenibile: investimenti in energie rinnovabili, riduzione dei consumi idrici per ettaro coltivato, rotazione delle colture per la salute del suolo e iniziative di economia circolare. Il report copre tutte le societa controllate del gruppo.',
+        'GRI', 'clima,energia,acqua,economia-circolare', false,
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- Mutti
+-- Casalasco
 INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
-VALUES (2, 'Bilancio di Sostenibilita Mutti 2023', 2023,
-        'https://mutti-parma.com/app/uploads/sites/7/2024/07/bilancio-sostenibilita-2023-d.pdf',
-        'Mutti_Bilancio_Sostenibilita_2023.pdf',
-        'Il Bilancio di Sostenibilita 2023 di Mutti documenta l''impegno per la riduzione dell''impronta idrica nella coltivazione del pomodoro, la collaborazione con il WWF per progetti di sostenibilita ambientale, il 100% di pomodoro italiano da filiera controllata e gli investimenti in agricoltura rigenerativa e packaging sostenibile.',
-        'GRI', 'water,biodiversity,supply-chain,packaging', false,
-        CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-
-INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
-VALUES (2, 'Bilancio Ambientale Mutti 2022', 2022,
-        'https://mutti-parma.com/app/uploads/sites/7/2023/11/bilancio-ambientale-2022.pdf',
-        'Mutti_Bilancio_Ambientale_2022.pdf',
-        'Il Bilancio Ambientale 2022 di Mutti, realizzato in collaborazione con il WWF Italia, rendiconta i progressi nella gestione sostenibile della filiera del pomodoro: riduzione dei consumi idrici, efficienza energetica degli stabilimenti e promozione di pratiche agricole a basso impatto ambientale.',
-        'GRI', 'water,energy,climate,agriculture', false,
-        CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-
--- Bolton Group
-INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
-VALUES (3, 'Bolton Group Sustainability Report 2023', 2023,
-        'https://www.bolton.com/sites/default/files/2024-09/Bolton%20Sustainability%20Report_2023_LOW.pdf',
-        'Bolton_Group_Sustainability_Report_2023.pdf',
-        'Il Sustainability Report 2023 di Bolton Group documenta l''impegno per una pesca responsabile e la tutela degli oceani. Tra i risultati: tonno Rio Mare proveniente da pesca sostenibile certificata, partnership con WWF e ISSF, riduzione della plastica vergine nel packaging e obiettivi di decarbonizzazione al 2030.',
-        'GRI', 'ocean,supply-chain,packaging,climate', false,
+VALUES (2, 'Bilancio di Sostenibilita Casalasco 2023', 2023,
+        'https://www.emilianaconserve.it/wp-content/uploads/2024/12/Bilancio-Consorzio-Casalasco-241127.pdf',
+        'Casalasco_Bilancio_Sostenibilita_2023.pdf',
+        'Il sesto Bilancio di Sostenibilita del Consorzio Casalasco documenta la gestione sostenibile di 12.000 ettari di coltivazione di pomodoro e il coinvolgimento di oltre 800 aziende agricole socie. Tra i risultati principali: riduzione dell''impronta idrica, investimenti in agricoltura di precisione, packaging sostenibile e valorizzazione della filiera corta dal campo alla tavola. Redatto con il supporto di Deloitte secondo standard GRI.',
+        'GRI', 'acqua,filiera,packaging,agricoltura', false,
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
-VALUES (3, 'Bolton Group Sustainability Report 2022', 2022,
-        'https://www.bolton.com/sites/default/files/2024-07/SUSTAINABILITY-REPORT%20(1).pdf',
-        'Bolton_Group_Sustainability_Report_2022.pdf',
-        'Nel report 2022, Bolton Group rendiconta i progressi nella strategia di sostenibilita: tracciabilita della filiera ittica, riduzione delle emissioni di CO2 nei processi produttivi, investimenti in progetti di rigenerazione degli ecosistemi marini e impegno per il benessere dei dipendenti.',
-        'GRI', 'ocean,climate,traceability,social', false,
+VALUES (2, 'Bilancio di Sostenibilita Casalasco 2022', 2022,
+        'https://www.casalasco.com/media/filer_public/cc/fc/ccfc714d-e332-480c-9b48-191742f539e3/237-23-bilancio_consorzio_casalasco_del_pomodoro_2022.pdf',
+        'Casalasco_Bilancio_Sostenibilita_2022.pdf',
+        'Il Bilancio 2022 del Consorzio Casalasco rendiconta i progressi nei cinque pilastri della strategia sostenibile: ambiente, innovazione, ricerca e sviluppo, persone e filiera. Focus sulla riduzione dei consumi energetici, sulla gestione delle risorse idriche nella coltivazione del pomodoro e sugli investimenti in tecnologie agricole innovative.',
+        'GRI', 'acqua,energia,agricoltura,innovazione', false,
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
--- Inalca
+-- Amadori
 INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
-VALUES (4, 'Bilancio di Sostenibilita Inalca 2023', 2023,
-        'https://www.cremonini.com/wp-content/uploads/2025/01/Bilancio-Sostenibilita-Inalca-2023-ITA_web.pdf',
-        'Inalca_Bilancio_Sostenibilita_2023.pdf',
-        'Il Bilancio di Sostenibilita 2023 di Inalca presenta i risultati lungo l''intera filiera bovina: dalla gestione responsabile degli allevamenti alla riduzione delle emissioni, dall''economia circolare nella trasformazione alla sicurezza alimentare. Focus su benessere animale, tracciabilita e impegno verso la carbon neutrality.',
-        'GRI', 'animal-welfare,climate,supply-chain,circular-economy', false,
+VALUES (3, 'Report di Sostenibilita Amadori 2023', 2023,
+        'https://www.amadori.it/hubfs/Amadori%202022/Report_Sostenibilit%C3%A0/Ama_report_sost_2023.pdf',
+        'Amadori_Report_Sostenibilita_2023.pdf',
+        'Il quarto Report di Sostenibilita del Gruppo Amadori copre l''esercizio 2023 secondo gli standard GRI 2021. Il documento rendiconta la gestione della filiera avicola integrata: dagli allevamenti alla distribuzione, con focus su benessere animale, sicurezza alimentare, riduzione delle emissioni, efficienza energetica degli stabilimenti e impegno sociale verso le comunita locali. Il fatturato del gruppo ha raggiunto 1.780 milioni di euro.',
+        'GRI', 'benessere-animale,filiera,clima,sociale', false,
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
-VALUES (4, 'Bilancio di Sostenibilita Inalca 2022', 2022,
-        'https://www.cremonini.com/wp-content/uploads/2024/04/Bilancio-di-sostenibilita_Inalca_22_ita.pdf',
-        'Inalca_Bilancio_Sostenibilita_2022.pdf',
-        'Nel Bilancio 2022, Inalca rendiconta gli impegni in materia di sostenibilita della filiera zootecnica: efficienza energetica, riduzione degli sprechi, benessere animale certificato, tracciabilita completa dalla stalla alla tavola e investimenti in energie rinnovabili per gli stabilimenti produttivi.',
-        'GRI', 'animal-welfare,energy,traceability,waste', false,
+VALUES (3, 'Report di Sostenibilita Amadori 2022', 2022,
+        'https://www.amadori.it/hubfs/Amadori%202022/Report%20Sostenibilit%C3%A0/Amadori_report_sost_2022.pdf',
+        'Amadori_Report_Sostenibilita_2022.pdf',
+        'Il terzo Report di Sostenibilita di Amadori documenta i progressi nella gestione responsabile della filiera avicola: tracciabilita completa dal mangime al prodotto finito, investimenti nel benessere animale, riduzione dell''uso di antibiotici, efficienza energetica e progetti di economia circolare per la valorizzazione dei sottoprodotti.',
+        'GRI', 'benessere-animale,tracciabilita,energia,economia-circolare', false,
         CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
+-- Eurovo
+INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
+VALUES (4, 'Bilancio di Sostenibilita Eurovo 2023', 2023,
+        'https://www.eurovo.com/sostenibilita/IT/Bds_25_IT.pdf',
+        'Eurovo_Bilancio_Sostenibilita_2023.pdf',
+        'Il terzo Bilancio di Sostenibilita del Gruppo Eurovo rendiconta i risultati del leader europeo nella produzione di uova: completamento della transizione cage-free in tutti gli allevamenti italiani, installazione di 16 impianti fotovoltaici, piantumazione di 2.000 alberi per la cattura di 16,5 tonnellate di CO2 annue e sviluppo di progetti di economia circolare e biodiversita.',
+        'GRI', 'benessere-animale,energia,biodiversita,economia-circolare', false,
+        CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+
+INSERT INTO reports (company_id, title, report_year, pdf_url, pdf_file_name, summary, standard, tags, file_stored, created_at, updated_at)
+VALUES (4, 'Bilancio di Sostenibilita Eurovo 2022', 2022,
+        'https://www.eurovo.com/sites/default/files/Bilancio_sostenibilita_2022_IT_web_0.pdf',
+        'Eurovo_Bilancio_Sostenibilita_2022.pdf',
+        'Il secondo Bilancio di Sostenibilita di Eurovo si fonda su cinque pilastri: benessere animale, qualita e sicurezza alimentare, innovazione e salute, sostenibilita ambientale e impegno sociale. Il report documenta l''avvio della transizione verso allevamenti cage-free, gli investimenti in energia rinnovabile e le iniziative per la protezione della biodiversita.',
+        'GRI', 'benessere-animale,energia,innovazione,sociale', false,
+        CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
